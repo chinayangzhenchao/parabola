@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border: none;
+            box-sizing: border-box;
+        }
+
+        ul {
+            width: 100%;
+            border: 1px solid #ccc;
+        }
+
+        ul li {
+            width: 100%;
+            height: 120px;
+            border-bottom: 1px solid #e0e0e0;
+            position: relative;
+            /*display: flex;*/
+            /*align-items: center;*/
+            /*justify-content: space-between;*/
+        }
+
+        li .left {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            width: 100px;
+        }
+
+        li .left > img {
+            width: 100px;
+        }
+
+        li .right {
+            width: 380px;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+
+        .right .input {
+            height: 30px;
+            width: 152px;
+            border: 1px solid #ccc;
+            text-align: center;
+            line-height: 30px;
+            margin-top: 10px;
+            position: relative;
+        }
+
+        .input span {
+            float: left;
+            height: 100%;
+            width: 40px;
+            cursor: pointer;
+            font-size: 18px;
+
+        }
+
+        .input input {
+            float: left;
+            height: 100%;
+            width: 70px;
+            text-align: center;
+            line-height: 30px;
+            border-left: 1px solid #ccc;
+            border-right: 1px solid #ccc;
+            font-size: 15px;
+        }
+
+        #shopCart {
+            position: fixed;
+            left: 20px;
+            bottom: 0px;
+        }
+
+        #shopCart img {
+            width: 110px;
+        }
+
+    </style>
+
+
+</head>
+<body>
+<ul>
+    <li>
+        <div class="left">
+            <img src="image/seckill_1.jpg" alt="">
+        </div>
+        <div class="right">
+            <p>新设计USB便充，一把在手，组装无优，可用充电宝充电的螺丝刀</p>
+            <p>￥129.00</p>
+            <div class="input">
+                <span class="min">-</span>
+                <input type="tel" value='1'>
+                <span class="add">+</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="left">
+            <img src="image/intro1.jpg" alt="">
+        </div>
+        <div class="right">
+            <p>新设计USB便充，一把在手，组装无优，可用充电宝充电的螺丝刀</p>
+            <p>￥129.00</p>
+            <div class="input">
+                <span class="min">-</span>
+                <input type="tel" value='1'>
+                <span class="add">+</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="left">
+            <img src="image/intro2.jpg" alt="">
+        </div>
+        <div class="right">
+            <p>新设计USB便充，一把在手，组装无优，可用充电宝充电的螺丝刀</p>
+            <p>￥129.00</p>
+            <div class="input">
+                <span class="min">-</span>
+                <input type="tel" value='1'>
+                <span class="add">+</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="left">
+            <img src="image/intro3.jpg" alt="">
+        </div>
+        <div class="right">
+            <p>新设计USB便充，一把在手，组装无优，可用充电宝充电的螺丝刀</p>
+            <p>￥129.00</p>
+            <div class="input">
+                <span class="min">-</span>
+                <input type="tel" value='1'>
+                <span class="add">+</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="left">
+            <img src="image/intro4.jpg" alt="">
+        </div>
+        <div class="right">
+            <p>新设计USB便充，一把在手，组装无优，可用充电宝充电的螺丝刀</p>
+            <p>￥129.00</p>
+            <div class="input">
+                <span class="min">-</span>
+                <input type="tel" value='1'>
+                <span class="add">+</span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="left">
+            <img src="image/detail03.jpg" alt="">
+        </div>
+        <div class="right">
+            <p>新设计USB便充，一把在手，组装无优，可用充电宝充电的螺丝刀</p>
+            <p>￥129.00</p>
+            <div class="input">
+                <span class="min">-</span>
+                <input type="tel" value='1'>
+                <span class="add">+</span>
+            </div>
+        </div>
+    </li>
+</ul>
+<div id="shopCart">
+    <img src="image/n-cart.png" alt="">
+</div>
+<script src="js/jquery-3.1.1.js"></script>
+<script src="js/parabola.js"></script>
+<script>
+    window.onload = function () {
+
+        var shopCart = $('#shopCart');
+        $('.add').on('click', function () {
+            var tt = $(this).parent().parent().parent();
+            var index = tt.index();
+            var tempPd = $('li').eq(index).children('div').eq(0).clone(true);
+            tt.append(tempPd);
+            parabola({
+                origin: $(this),
+                target: shopCart,
+                element: tempPd,
+                a: 0.002,
+                time: 500,
+                index:index*120,
+                callback: function () {
+                    tempPd.css('display', 'none');
+                }
+            });
+        })
+    }
+</script>
+</body>
+</html>
